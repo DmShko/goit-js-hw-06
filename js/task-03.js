@@ -13,18 +13,29 @@ const images = [
   },
 ];
 
-let elementLiArr = [];
+function imgStyle() {
+  const ulElement = document.querySelector(".gallery");
+  const imgElement = document.getElementsByTagName("img");
 
-for(const element of images) {
-  let newElement = document.createElement("li"); 
-  let newImag = document.createElement("img");
-  newImag.setAttribute("src", element.url);
-  newImag.setAttribute("alt", element.alt);
-  newImag.style.width = "500px";
-  newImag.style.flexWrap = "wrap";
-  newElement.appendChild(newImag);
-  elementLiArr.push(newElement);
-  // .setAttribute("src", element.url)
+  ulElement.style.listStyle = "none";
+  ulElement.style.display = "flex";
+  ulElement.style.flexWrap = "wrap";
+  ulElement.style.columnGap = "20px";
+  ulElement.style.rowGap = "20px";
+  
+  // console.log(luChildren);
+  for(const element of imgElement) {
+    element.style.width = "350px";
+  }
+    
 }
 
-document.querySelector(".gallery").insertAdjacentHTML("afterbegin", ...elementLiArr);
+// create string content for second parameter of "insertAdjacentHTML" metod
+const newElement = images.map(image => `<li><img src = ${image.url} alt = ${image.alt}></li>`)
+.join("");
+
+// add content (markup) to ul with "gallery" class
+document.querySelector(".gallery").insertAdjacentHTML("afterbegin", newElement);
+
+// add style for "img" element
+imgStyle();
