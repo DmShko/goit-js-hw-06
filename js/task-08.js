@@ -16,8 +16,6 @@ function checkElement() {
         if(curentElement.nodeName  === 'INPUT' && curentElement.value.length === 0) 
             return true;
     }
-    // console.log(objSet.formElement.elements.namedItem("email").value);
-    // return objSet.formElement.elements.every(element => element.tagName === 'input');
 }
 
 function processor() {
