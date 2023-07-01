@@ -9,5 +9,5 @@ const eventArr = {
 
 eventArr.inputElement.addEventListener("input", (e) => {
     eventArr.spanElement.style.fontSize = `${e.target.value}px`;
-    console.log(e.target.value);
+    // console.log(e.target.value);
 });
