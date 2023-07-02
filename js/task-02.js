@@ -11,13 +11,14 @@ const ingredients = [
 
 // list of new li-element
 let elementLiArr = [];
+
 // create new li-element and add to "elementLiArr"
-for(const element of ingredients) {
+const resault = ingredients.map(element => {
   let newElement = document.createElement("li");
-  newElement.innerHTML = element;
+  newElement.textContent = element;
   newElement.classList.add("item");
   elementLiArr.push(newElement);
-}
+})
 
 // insert elements of "elementLiArr" to "ingredients" as children
 document.querySelector("#ingredients").append(...elementLiArr);

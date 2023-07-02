@@ -14,8 +14,8 @@ function createBoxes() {
 
   for(let element = 0; element < Number(elementLinkSet.inputElementLink.value); element += 1) {
     let newElement = document.createElement("div");
-    newElement.style.width = `${30 * (element + 1)}px`;
-    newElement.style.height = `${30 * (element + 1)}px`;
+    newElement.style.width = `${30 + (element + 1) * 10}px`;
+    newElement.style.height = `${30 + (element + 1)* 10}px`;
     newElement.style.backgroundColor = getRandomHexColor();
     elementLinkSet.outContainerLink.appendChild(newElement);
   }

@@ -7,7 +7,8 @@ const eventArr = {
    maxSize: document.querySelector('[max]'),
 };
 
+eventArr.spanElement.style.fontSize = `${eventArr.inputElement.value}px`;
+
 eventArr.inputElement.addEventListener("input", (e) => {
     eventArr.spanElement.style.fontSize = `${e.target.value}px`;
-    // console.log(e.target.value);
 });
