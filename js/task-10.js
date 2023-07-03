@@ -40,6 +40,7 @@ elementLinkSet.controlsElementLink.addEventListener('click', e => {
       createBoxes();
         return;
     }
+    
     destroyBoxes()
   } 
 });
