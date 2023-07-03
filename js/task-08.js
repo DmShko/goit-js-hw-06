@@ -19,11 +19,12 @@ function checkElement() {
 // main operations
 function processor() {
   
-    for(let i = 0; i < objSet.formElement.elements.length; i += 1) {
-        let curentElement = objSet.formElement.elements[i];
-        if(curentElement.nodeName  === 'INPUT') 
-        objSet.accessArr[curentElement.name] = curentElement.value;    
-    }
+    Array.from(objSet.formElement.elements).forEach(element => {
+        if(element.nodeName  === 'INPUT')  
+            objSet.accessArr[element.name] = element.value;    
+
+    });
+    
     objSet.formElement.reset();
     console.log(objSet.accessArr);
 }
