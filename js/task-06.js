@@ -5,10 +5,11 @@ const inputElement = document.querySelector('#validation-input');
 
 inputElement.addEventListener('blur', inputCheck);
 
-console.log(inputElement.getAttribute("data-length"));
+// console.log(inputElement.getAttribute("data-length"));
 
 function inputCheck() {
-    if(inputElement.value.length === Number(inputElement.getAttribute("data-length"))) {
+   
+    if(inputElement.value.trim().length === Number(inputElement.getAttribute("data-length"))) {
         inputElement.classList.add("valid");
         inputElement.classList.remove("invalid");
     }     

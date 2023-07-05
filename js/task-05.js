@@ -12,7 +12,5 @@ elementArr.inputElement.addEventListener('input', changeSpanInner);
 // interrupt handler
 function changeSpanInner() {
     elementArr.outElement.textContent = elementArr.inputElement.value;
-    if(elementArr.inputElement.value === "" || 
-    elementArr.inputElement.value.split("").every(element => element === " ") === true) 
-        elementArr.outElement.textContent = "Anonymous";
+    elementArr.outElement.textContent = elementArr.inputElement.value.trim() || "Anonymous";
 }   

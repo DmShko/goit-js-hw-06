@@ -1,44 +1,28 @@
 const objSet = {
     subEvent: document.querySelector('[type="submit"]'),
-    accessArr: {},
     formElement: document.querySelector('.login-form'),
 } 
 
 // universal function that add event
-function addEvent (action, element, name) {
-    element.addEventListener(action, name);
-}
+// function addEvent (action, element, name) {
+objSet.formElement.addEventListener('click', EventItter);
+// }
 
-// find "input" element and check if he empty
-function checkElement() {
-    return Array.from(objSet.formElement.elements).some(element => 
-        element.nodeName  === 'INPUT' && element.value.length === 0 
-    );
-}
+// addEvent('click', objSet.subEvent, buttonEventItter);
 
-// main operations
-function processor() {
-  
-    Array.from(objSet.formElement.elements).forEach(element => {
-        if(element.nodeName  === 'INPUT')  
-            objSet.accessArr[element.name] = element.value;    
-
-    });
-    
-    objSet.formElement.reset();
-    console.log(objSet.accessArr);
-}
-
-// add event to form
-addEvent('click', objSet.formElement, formEventItter);
-
-function formEventItter(e){
-    e.preventDefault();
+function EventItter(e) {
     if(e.target.getAttribute('type') === 'submit') {
-        if(checkElement()) {
-            alert("All 'input' fills must be filled!");
-            return;
+        e.preventDefault();
+        const { elements: { email, password } } = objSet.formElement;
+        
+        if(email.value === "" || password.value === "")
+            return alert("All 'input' fills must be filled!");
+        else{ 
+            const accessArr = {};
+            accessArr.email=email.value;
+            accessArr.password=password.value;
+            objSet.formElement.reset();
+            console.log(accessArr);
         }
-        processor();
     }
 }

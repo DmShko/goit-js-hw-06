@@ -11,21 +11,32 @@ const elementLinkSet = {
 };
 
 function createBoxes() {
+  // get input value (box quantity)
+  let  countElements = Number(elementLinkSet.inputElementLink.value);
 
-let  countElements = Number(elementLinkSet.inputElementLink.value);
+  // get min, max, step
+  const minValue = Number(elementLinkSet.inputElementLink.min);
+  const maxValue = Number(elementLinkSet.inputElementLink.max);
+  const stepValue = Number(elementLinkSet.inputElementLink.step);
 
-  if(0 < countElements && countElements <= 100) {
-    for(let element = 0; element < countElements; element += 1) {
+  // check input value
+  if(minValue < countElements && countElements <= maxValue) {
+    const boxesSet = [];
+    for(let element = 0; element < countElements; element += stepValue) {
       let newElement = document.createElement("div");
       newElement.style.width = `${30 + (element + 1) * 10}px`;
-      newElement.style.height = `${30 + (element + 1)* 10}px`;
+      newElement.style.height = `${30 + (element + 1) * 10}px`;
       newElement.style.backgroundColor = getRandomHexColor();
-      elementLinkSet.outContainerLink.appendChild(newElement);
+      boxesSet[element] = newElement;
     }
+    // add all box to "boxes"
+    elementLinkSet.outContainerLink.append(...boxesSet);
   }
+  // cleaner input
   elementLinkSet.inputElementLink.value = "";
 }
-
+ 
+// cleaner "boxes"
 function destroyBoxes() {
   elementLinkSet.outContainerLink.innerHTML = "";
   elementLinkSet.inputElementLink.value = "";
@@ -35,12 +46,15 @@ elementLinkSet.controlsElementLink.addEventListener('click', e => {
 
   e.preventDefault();
 
+  // check event target and select operation
   if(e.target.nodeName !== "INPUT") {
     if(e.target.hasAttribute("data-create") && elementLinkSet.inputElementLink.value.length !== 0) {
       createBoxes();
         return;
     }
-    
-    destroyBoxes()
+    if(e.target.hasAttribute("data-destroy") && elementLinkSet.inputElementLink.value.length === 0) {
+      destroyBoxes()
+        return;
+    }
   } 
 });

@@ -11,7 +11,7 @@ const elementLinkSet = {
 
 const colorChangeElement = document.querySelector('button.change-color')
   .addEventListener('click', (e) => {
-    let colorValue = getRandomHexColor();
+    const colorValue = getRandomHexColor();
     elementLinkSet.bodyElement.style.backgroundColor = colorValue;
     elementLinkSet.spanElement.textContent = colorValue;  
   });
